@@ -787,7 +787,7 @@ func TestInvalidPath(t *testing.T) {
 	}
 	s := S9{}
 	err := NewDecoder().Decode(&s, data)
-	expectedErr := `schema: invalid path "Foo.Bar"`
+	expectedErr := `Received unknown parameter: "Foo.Bar"`
 	if err.Error() != expectedErr {
 		t.Fatalf("got %q, want %q", err, expectedErr)
 	}

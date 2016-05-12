@@ -81,7 +81,7 @@ func (d *Decoder) Decode(dst interface{}, src map[string][]string) error {
 				errors[path] = err
 			}
 		} else if !d.ignoreUnknownKeys {
-			errors[path] = fmt.Errorf("schema: invalid path %q", path)
+			errors[path] = fmt.Errorf("Received unknown parameter: %q", path)
 		}
 	}
 	if len(errors) > 0 {
