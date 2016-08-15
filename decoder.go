@@ -77,6 +77,10 @@ func (d *Decoder) Decode(dst interface{}, src map[string][]string) error {
 	errors := MultiError{}
 	for path, values := range src {
 		if parts, err := d.cache.parsePath(path, t); err == nil {
+			//key=  没有values的情况
+			if len(values) == 1 && values[0] == "" && d.zeroEmpty == false {
+				continue
+			}
 			if err = d.decode(v, path, parts, values); err != nil {
 				errors[path] = err
 			}
